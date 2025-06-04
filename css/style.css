@@ -1,190 +1,754 @@
-/* ... (tu CSS existente) ... */
+/*- Estilos PRINCIPALES y BASE para toda la aplicación */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --primary-light-color: #e0f0ff; /* Un azul más claro para fondos sutiles */
+  --on-primary-color: #ffffff; /* Texto sobre color primario */
 
-/* Estilos para tablas de gestión */
+  --secondary-color: #6c757d;
+  --secondary-hover-color: #545b62;
+  --on-secondary-color: #ffffff;
+
+  --success-color: #28a745;
+  --success-hover-color: #1e7e34;
+  --on-success-color: #ffffff;
+
+  --danger-color: #dc3545;
+  --danger-hover-color: #b02a37;
+  --on-danger-color: #ffffff;
+
+  --warning-color: #ffc107;
+  --warning-hover-color: #d39e00;
+  --on-warning-color: #212529; /* Texto oscuro para amarillo */
+
+  --info-color: #17a2b8;
+  --info-hover-color: #117a8b;
+  --on-info-color: #ffffff;
+
+  --surface-color: #ffffff; /* Color de fondo para "cards" o superficies elevadas */
+  --background-color: #f8f9fa; /* Color de fondo principal del body de la APP */
+  /* --background-color-page: #eef2f7; QUITAMOS ESTA, se manejará en style2.css */
+  --on-surface-color: #343a40; /* Texto principal sobre superficies */
+  --text-muted-color: #6c757d;
+  --border-color: #dee2e6;
+  --border-color-light: #e9ecef;
+
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+
+  --shadow-xs: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+  --font-primary: "Roboto", sans-serif;
+  --font-headings: "Poppins", sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --transition-speed-fast: 0.15s;
+  --transition-speed-normal: 0.2s;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* Base for rem units */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* ESTE ES EL BODY PARA index.html */
+  font-family: var(--font-primary);
+  background-color: var(
+    --background-color
+  ); /* Fondo de la aplicación principal */
+  color: var(--on-surface-color);
+  line-height: 1.6;
+  font-size: 1rem; /* 16px by default */
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 95%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--surface-color);
+  padding: var(--spacing-sm) 0;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1020; /* Ensure it's above most content */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.logo-icon {
+  font-size: 2.25rem;
+  margin-right: var(--spacing-sm);
+}
+header h1 {
+  font-family: var(--font-headings);
+  font-size: 1.65rem;
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  color: var(--on-surface-color);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.nav-button {
+  background-color: transparent;
+  color: var(--text-muted-color);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: color var(--transition-speed-normal) ease,
+    background-color var(--transition-speed-normal) ease;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+.nav-button:hover {
+  color: var(--primary-color);
+  background-color: var(--primary-light-color);
+}
+.nav-button.active {
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--primary-light-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Main Content Area */
+#contenido-principal {
+  flex-grow: 1;
+  padding: var(--spacing-xl) 0;
+}
+
+#contenido > div {
+  /* The dynamically generated view container */
+  background-color: var(--surface-color);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* Section Headers (e.g., "Gestión de Medicamentos") */
 .gestion-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color-light);
 }
-
 .gestion-header h2 {
+  font-family: var(--font-headings);
+  color: var(--on-surface-color);
+  font-size: 1.85rem;
+  font-weight: var(--font-weight-semibold);
   margin: 0;
-  color: #333;
 }
 
-.btn-agregar {
-  background-color: #009879;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
+/* Buttons General */
+.btn {
+  padding: 0.65rem 1.3rem;
+  border-radius: var(--border-radius-md);
   cursor: pointer;
+  font-weight: var(--font-weight-medium);
   font-size: 0.9rem;
-}
-.btn-agregar:hover {
-  background-color: #007f68;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  background-color: white;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px 12px;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-th {
-  background-color: #f2f2f2;
-  color: #333;
-  font-weight: bold;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-.btn-editar, .btn-eliminar, .btn-guardar, .btn-cancelar, .btn-accion-secundaria, .btn-accion-peligro, .btn-remover-item {
-  padding: 0.4rem 0.8rem;
-  margin-right: 0.3rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85rem;
   border: 1px solid transparent;
+  transition: all var(--transition-speed-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  line-height: 1.5;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: scale(0.98) translateY(0);
+}
+.btn:focus-visible {
+  /* For keyboard navigation */
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+.btn i,
+.btn .fab,
+.btn .fas,
+.btn .far {
+  /* More specific FontAwesome selectors */
+  line-height: 1; /* Ensure icon doesn't mess with button height */
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+}
+
+.btn-agregar,
+.btn-guardar {
+  background-color: var(--success-color);
+  color: var(--on-success-color);
+  border-color: var(--success-color);
+}
+.btn-agregar:hover,
+.btn-guardar:hover {
+  background-color: var(--success-hover-color);
+  border-color: var(--success-hover-color);
 }
 
 .btn-editar {
-  background-color: #ffc107;
-  color: #333;
-  border-color: #ffc107;
+  background-color: var(--warning-color);
+  color: var(--on-warning-color);
+  border-color: var(--warning-color);
 }
-.btn-editar:hover { background-color: #e0a800; }
-
-.btn-eliminar, .btn-accion-peligro, .btn-remover-item {
-  background-color: #dc3545;
-  color: white;
-  border-color: #dc3545;
+.btn-editar:hover {
+  background-color: var(--warning-hover-color);
+  border-color: var(--warning-hover-color);
 }
-.btn-eliminar:hover, .btn-accion-peligro:hover, .btn-remover-item:hover { background-color: #c82333; }
 
-/* Formularios de gestión */
+.btn-eliminar,
+.btn-accion-peligro,
+.btn-remover-item {
+  background-color: var(--danger-color);
+  color: var(--on-danger-color);
+  border-color: var(--danger-color);
+}
+.btn-eliminar:hover,
+.btn-accion-peligro:hover,
+.btn-remover-item:hover {
+  background-color: var(--danger-hover-color);
+  border-color: var(--danger-hover-color);
+}
+
+.btn-cancelar {
+  background-color: var(--secondary-color);
+  color: var(--on-secondary-color);
+  border-color: var(--secondary-color);
+}
+.btn-cancelar:hover {
+  background-color: var(--secondary-hover-color);
+  border-color: var(--secondary-hover-color);
+}
+
+.btn-accion-secundaria {
+  background-color: var(--info-color);
+  color: var(--on-info-color);
+  border-color: var(--info-color);
+}
+.btn-accion-secundaria:hover {
+  background-color: var(--info-hover-color);
+  border-color: var(--info-hover-color);
+}
+
+.btn-logout {
+  /* Specific style for logout button in header */
+  background-color: var(--danger-color);
+  color: var(--on-danger-color);
+  border-color: var(--danger-color);
+  padding: var(--spacing-sm) var(--spacing-md); /* Match nav button padding */
+}
+.btn-logout:hover {
+  background-color: var(--danger-hover-color);
+  border-color: var(--danger-hover-color);
+}
+.btn-logout i {
+  margin-right: var(--spacing-xs);
+}
+
+/* Icon-only buttons (often for table actions) */
+.btn-icon {
+  padding: 0.5rem;
+  width: 2.25rem; /* Square shape */
+  height: 2.25rem;
+}
+.btn-icon i {
+  margin-right: 0 !important;
+  font-size: 1rem;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(
+    --surface-color
+  ); /* Ensure bg color if table is transparent */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+th,
+td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color-light);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+thead th {
+  background-color: var(--background-color); /* Usa el fondo de la app */
+  color: var(--text-muted-color);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-headings);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  border-bottom-width: 2px;
+  border-bottom-color: var(--border-color);
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03); /* Subtle hover */
+}
+td ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+td ul li {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.85rem;
+}
+td .btn {
+  /* Smaller buttons in table cells */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin-right: var(--spacing-xs);
+}
+td .btn:last-child {
+  margin-right: 0;
+}
+td .btn-icon {
+  /* Icon buttons in table cells */
+  padding: 0.4rem;
+  width: 2rem;
+  height: 2rem;
+}
+td .btn-icon i {
+  font-size: 0.9rem;
+}
+
+/* Forms */
 .form-gestion {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
+  /* Contenedor para formularios de gestión en la app principal */
+  margin-bottom: var(--spacing-xl);
 }
-
 .form-gestion h3 {
+  font-family: var(--font-headings);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
   margin-top: 0;
-  color: #009879;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color-light);
 }
 
-.form-gestion label {
+.form-group {
+  /* Wrapper for label + input (ESTILO BASE) */
+  margin-bottom: var(--spacing-md);
+}
+
+/* Estilos base para labels e inputs (se aplicarán a AMBAS páginas si .form-group se usa) */
+label {
+  /* ESTILO BASE */
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #555;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--on-surface-color);
+  font-size: 0.9rem;
 }
 
-.form-gestion input[type="text"],
-.form-gestion input[type="number"],
-.form-gestion input[type="email"],
-.form-gestion input[type="date"],
-.form-gestion select {
-  width: calc(100% - 22px); /* Ajuste para padding/border */
-  padding: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="password"], /* Incluido para que el login lo herede */
+select,
+textarea {
+  /* ESTILOS BASE */
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
   box-sizing: border-box;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-speed-normal) ease,
+    box-shadow var(--transition-speed-normal) ease;
+  background-color: var(--surface-color);
+  color: var(--on-surface-color);
 }
-.form-gestion input:focus, .form-gestion select:focus {
-  border-color: #009879;
+input:focus,
+select:focus,
+textarea:focus {
+  /* ESTILOS BASE */
+  border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0,152,121,.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus ring */
+}
+input::placeholder,
+textarea::placeholder {
+  /* ESTILOS BASE */
+  color: var(--text-muted-color);
+  opacity: 0.7;
+}
+input:disabled,
+select:disabled,
+textarea:disabled {
+  /* ESTILOS BASE */
+  background-color: var(--border-color-light);
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .form-actions {
-  margin-top: 1.5rem;
-  text-align: right;
+  /* Para formularios de la app principal */
+  margin-top: var(--spacing-lg);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
-.btn-guardar {
-  background-color: #28a745;
-  color: white;
-  border-color: #28a745;
-}
-.btn-guardar:hover { background-color: #218838; }
-
-.btn-cancelar {
-  background-color: #6c757d;
-  color: white;
-  border-color: #6c757d;
-}
-.btn-cancelar:hover { background-color: #5a6268; }
-
-.btn-accion-secundaria {
-  background-color: #17a2b8;
-  color: white;
-  border-color: #17a2b8;
-}
-.btn-accion-secundaria:hover { background-color: #138496; }
-
-
-/* Para items de venta */
+/* Items de Venta en Formulario (Específico de index.html) */
 #itemsVentaFieldset {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-color);
 }
 #itemsVentaFieldset legend {
-  font-weight: bold;
-  color: #333;
+  font-weight: var(--font-weight-semibold);
+  color: var(--on-surface-color);
+  padding: 0 var(--spacing-sm);
+  font-family: var(--font-headings);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
 }
 .item-venta-linea {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(150px, 3fr) 1fr 1fr auto; /* Medicamento, Cantidad, Precio, Botón */
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #eee;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px dashed var(--border-color);
 }
 .item-venta-linea:last-child {
   border-bottom: none;
   margin-bottom: 0;
+  padding-bottom: 0;
 }
-.item-venta-linea .medicamento-select {
-  flex-grow: 1;
-  margin-bottom: 0; /* Sobrescribir margen general */
+.item-venta-linea .medicamento-select,
+.item-venta-linea .cantidad-medicamento {
+  margin-bottom: 0; /* Override default form element margin */
 }
 .item-venta-linea .cantidad-medicamento {
-  width: 70px;
-  margin-bottom: 0;
+  text-align: center;
 }
 .item-venta-linea .precio-unitario-display {
-    min-width: 80px;
-    font-size: 0.9em;
-    color: #555;
+  font-size: 0.9em;
+  color: var(--text-muted-color);
+  white-space: nowrap;
+  text-align: right;
+}
+#itemsVentaFieldset #btnAgregarItemVenta {
+  margin-top: var(--spacing-md);
 }
 #totalVentaCalculado {
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #009879;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.35em;
+  color: var(--primary-color);
+}
+.form-gestion p strong#totalVentaCalculadoContainer {
+  /* Adjusted for more semantic HTML if you wrap the total */
+  display: block;
+  text-align: right;
+  margin-top: var(--spacing-md);
+  font-size: 1.1rem;
+}
+
+/* Footer (Específico de index.html) */
+footer {
+  background-color: #2c3e50; /* Darker, sophisticated blue-grey */
+  color: #bdc3c7; /* Lighter grey for text */
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: auto; /* Pushes footer to bottom with flex page-wrapper */
+  border-top: 4px solid var(--primary-color);
+}
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+footer p {
+  margin-bottom: var(--spacing-xs);
+}
+footer strong {
+  color: #ecf0f1; /* Even lighter for emphasis */
+  font-weight: var(--font-weight-medium);
+}
+footer .icon-heart {
+  color: #e74c3c; /* Consistent red for heart */
+  animation: pulseHeart 1.5s infinite ease-in-out;
+}
+@keyframes pulseHeart {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+.social-icons a {
+  color: #bdc3c7;
+  margin: 0 var(--spacing-sm);
+  font-size: 1.4rem;
+  transition: color var(--transition-speed-normal) ease,
+    transform var(--transition-speed-normal) ease;
+}
+.social-icons a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* Spinner de Carga (Común, pero definido aquí como base) */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  min-height: 200px; /* Ensure it takes some space */
+}
+.loading-spinner i {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Adjustments (Específico de index.html en su mayoría) */
+@media (max-width: 992px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start; /* Align logo and nav to start */
+  }
+  .header-content .btn-logout {
+    align-self: flex-start; /* Align logout button with nav */
+    margin-top: var(--spacing-sm);
+  }
+  nav {
+    width: 100%; /* Make nav take full width to allow wrapping */
+    justify-content: flex-start;
+  }
+  .item-venta-linea {
+    grid-template-columns: 1fr 1fr auto; /* Medicamento, Cantidad + Precio, Botón */
+    grid-template-areas:
+      "medicamento medicamento medicamento"
+      "cantidad precio remover";
+  }
+  .item-venta-linea .medicamento-select {
+    grid-area: medicamento;
+  }
+  .item-venta-linea .cantidad-medicamento {
+    grid-area: cantidad;
+  }
+  .item-venta-linea .precio-unitario-display {
+    grid-area: precio;
+    text-align: left;
+  }
+  .item-venta-linea .btn-remover-item {
+    grid-area: remover;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 768px) {
+  /* :root { font-size: 93.75%; }  Si necesitas cambiar la base global, hazlo. Sino, ajustes específicos. */
+  header h1 {
+    font-size: 1.5rem;
+  }
+  .logo-icon {
+    font-size: 2rem;
+  }
+
+  .gestion-header {
+    flex-direction: column;
+    align-items: stretch; /* Make button full width */
+  }
+  .gestion-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions .btn {
+    width: 100%;
+  }
+  #contenido > div {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-button {
+    width: 100%; /* Stack nav buttons vertically */
+    justify-content: flex-start;
+    padding-left: var(--spacing-md);
+  }
+  .nav-button.active {
+    border-left: 3px solid var(--primary-color);
+    border-bottom-color: transparent; /* Remove bottom border for stacked view */
+  }
+  .header-content {
+    gap: var(--spacing-sm);
+  }
+  header h1 {
+    font-size: 1.35rem;
+  }
+  .logo-icon {
+    font-size: 1.75rem;
+  }
+  .gestion-header h2 {
+    font-size: 1.6rem;
+  }
+  #contenido > div {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  .item-venta-linea {
+    grid-template-columns: 1fr; /* Stack everything vertically */
+    grid-template-areas:
+      "medicamento"
+      "cantidad"
+      "precio"
+      "remover";
+    gap: var(--spacing-sm);
+  }
+  .item-venta-linea .precio-unitario-display,
+  .item-venta-linea .btn-remover-item {
+    justify-self: start; /* Align to left */
+  }
+  .item-venta-linea .btn-remover-item {
+    width: 100%;
+  }
+  .social-icons a {
+    font-size: 1.3rem;
+    margin: 0 var(--spacing-xs);
+  }
+}
+
+/* Utility classes (pueden ser usadas por ambas páginas si se incluyen aquí) */
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.mb-1 {
+  margin-bottom: var(--spacing-xs);
+}
+.mb-2 {
+  margin-bottom: var(--spacing-sm);
+}
+.mb-3 {
+  margin-bottom: var(--spacing-md);
+}
+.mt-1 {
+  margin-top: var(--spacing-xs);
+}
+.mt-2 {
+  margin-top: var(--spacing-sm);
+}
+.mt-3 {
+  margin-top: var(--spacing-md);
 }

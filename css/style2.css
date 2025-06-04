@@ -1,0 +1,179 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --on-primary-color: #ffffff;
+
+  --surface-color: #ffffff;
+  --background-color-page: #eef2f7; /* Light, calm background */
+  --on-surface-color: #343a40;
+  --text-muted-color: #6c757d;
+  --border-color: #dee2e6;
+  --danger-color: #dc3545;
+
+  --border-radius-md: 0.375rem;
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+  --font-primary: "Roboto", sans-serif;
+  --font-headings: "Poppins", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --transition-speed-normal: 0.2s;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--background-color-page);
+  color: var(--on-surface-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column; /* For footer alignment */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.login-page-wrapper {
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-container {
+  background-color: var(--surface-color);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+.login-logo-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+.login-header h2 {
+  font-family: var(--font-headings);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--on-surface-color);
+  margin-bottom: var(--spacing-xs);
+}
+.login-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted-color);
+}
+
+.login-form .form-group {
+  margin-bottom: var(--spacing-md);
+}
+.login-form label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed-normal) ease,
+    box-shadow var(--transition-speed-normal) ease;
+}
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.login-form input::placeholder {
+  color: var(--text-muted-color);
+  opacity: 0.7;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed-normal) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+}
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+.error-message {
+  color: var(--danger-color);
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--spacing-md);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.error-message:empty {
+  display: none;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  font-size: 0.85rem;
+  color: var(--text-muted-color);
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+  .login-logo-icon {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppFarmacia - Iniciar Sesión</title>
+
+  <!--
+    Página de inicio de sesión para AppFarmacia
+    - Uso de Google Fonts Poppins y Roboto para estilos tipográficos
+    - Font Awesome para iconos en la interfaz
+    - Archivo CSS específico para estilos de login (style2.css)
+    - Favicon personalizado con emoji
+  -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome (para iconos en el login) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilos CSS específicos para login -->
+  <link rel="stylesheet" href="css/style2.css" />
+
+  <!-- Favicon personalizado con emoji -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
+</head>
+
+<body>
+  <div class="login-page-wrapper">
+
+    <!-- Contenedor principal del formulario de login -->
+    <div class="login-container">
+
+      <!-- Encabezado del login con logo, título y mensaje de bienvenida -->
+      <div class="login-header">
+        <i class="fa-solid fa-pills login-logo-icon"></i>
+        <h2>AppFarmacia</h2>
+        <p>Bienvenido de nuevo. Por favor, ingrese sus credenciales.</p>
+      </div>
+
+      <!-- Formulario de inicio de sesión -->
+      <form id="loginForm" class="login-form">
+        <!-- Campo para usuario -->
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" placeholder="Ej: admin" required />
+        </div>
+
+        <!-- Campo para contraseña -->
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required />
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      </form>
+
+      <!-- Mensaje de error o estado de login -->
+      <p id="error-message" class="error-message"></p>
+
+      <!-- Pie de página del login -->
+      <div class="login-footer">
+        <p>© <span id="currentYearLogin"></span> AppFarmacia. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archivo JS que contiene la lógica del login -->
+  <script src="logic/script.js"></script>
+
+  <script>
+    // Actualiza el año actual automáticamente en el footer del login
+    document.getElementById('currentYearLogin').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
