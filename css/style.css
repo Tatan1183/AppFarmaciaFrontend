@@ -1,0 +1,190 @@
+/* ... (tu CSS existente) ... */
+
+/* Estilos para tablas de gestión */
+.gestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.gestion-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-agregar {
+  background-color: #009879;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.btn-agregar:hover {
+  background-color: #007f68;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-editar, .btn-eliminar, .btn-guardar, .btn-cancelar, .btn-accion-secundaria, .btn-accion-peligro, .btn-remover-item {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.3rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: #333;
+  border-color: #ffc107;
+}
+.btn-editar:hover { background-color: #e0a800; }
+
+.btn-eliminar, .btn-accion-peligro, .btn-remover-item {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+.btn-eliminar:hover, .btn-accion-peligro:hover, .btn-remover-item:hover { background-color: #c82333; }
+
+/* Formularios de gestión */
+.form-gestion {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.form-gestion h3 {
+  margin-top: 0;
+  color: #009879;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.form-gestion label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-gestion input[type="text"],
+.form-gestion input[type="number"],
+.form-gestion input[type="email"],
+.form-gestion input[type="date"],
+.form-gestion select {
+  width: calc(100% - 22px); /* Ajuste para padding/border */
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form-gestion input:focus, .form-gestion select:focus {
+  border-color: #009879;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0,152,121,.25);
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.btn-guardar {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+.btn-guardar:hover { background-color: #218838; }
+
+.btn-cancelar {
+  background-color: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+.btn-cancelar:hover { background-color: #5a6268; }
+
+.btn-accion-secundaria {
+  background-color: #17a2b8;
+  color: white;
+  border-color: #17a2b8;
+}
+.btn-accion-secundaria:hover { background-color: #138496; }
+
+
+/* Para items de venta */
+#itemsVentaFieldset {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+#itemsVentaFieldset legend {
+  font-weight: bold;
+  color: #333;
+}
+.item-venta-linea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+}
+.item-venta-linea:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.item-venta-linea .medicamento-select {
+  flex-grow: 1;
+  margin-bottom: 0; /* Sobrescribir margen general */
+}
+.item-venta-linea .cantidad-medicamento {
+  width: 70px;
+  margin-bottom: 0;
+}
+.item-venta-linea .precio-unitario-display {
+    min-width: 80px;
+    font-size: 0.9em;
+    color: #555;
+}
+#totalVentaCalculado {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #009879;
+}

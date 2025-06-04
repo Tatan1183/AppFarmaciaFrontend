@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppFarmacia</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧪 AppFarmacia</h1>
+    <nav>
+      <button onclick="mostrarVista('medicamentos')">Medicamentos</button>
+      <button onclick="mostrarVista('clientes')">Clientes</button>
+      <button onclick="mostrarVista('empleados')">Empleados</button>
+      <button onclick="mostrarVista('ventas')">Ventas</button>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- Aquí cargaremos dinámicamente las vistas -->
+  </main>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/medicamentos.js"></script>
+  <script src="./js/clientes.js"></script>
+  <script src="./js/empleados.js"></script>
+  <script src="./js/ventas.js"></script>
+</body>
+</html>
+
