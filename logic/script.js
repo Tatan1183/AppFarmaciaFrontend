@@ -26,7 +26,7 @@ if (loginForm) {
       errorMessage.style.color = "green";
       errorMessage.textContent = "Inicio de sesión exitoso. Redirigiendo...";
       setTimeout(() => {
-        window.location.href = "/frontend/app.html";
+        window.location.href = "app.html";
       }, 1000);
     } else {
       errorMessage.style.color = "red";
