@@ -26,7 +26,7 @@ if (loginForm) {
       errorMessage.style.color = "green";
       errorMessage.textContent = "Inicio de sesión exitoso. Redirigiendo...";
       setTimeout(() => {
-        window.location.href = "/frontend/index.html";
+        window.location.href = "/frontend/app.html";
       }, 1000);
     } else {
       errorMessage.style.color = "red";
@@ -35,8 +35,10 @@ if (loginForm) {
   });
 }
 
-// Función para cerrar sesión
+// Función para cerrar sesión y volver a la página de inicio
 function cerrarSesion() {
-  // Aquí podrías limpiar sesión/JWT si lo usas más adelante
-  window.location.href = "./Inicio.html";
+  // Limpiar estado de login
+  localStorage.removeItem('isLoggedInAppFarmacia');
+  // Redirige a la página de login (que ahora es index.html)
+  window.location.href = "index.html"; // CAMBIO AQUÍ
 }
