@@ -4,7 +4,7 @@ async function cargarVistaMedicamentos(contenedor) {
   contenedor.innerHTML = `
     <div class="gestion-header">
       <h2>Gestión de Medicamentos</h2>
-      <button id="btnAgregarMedicamento" class="btn-agregar">Agregar Medicamento</button>
+      <button id="btnAgregarMedicamento" class="btn-agregar"><i class="	fas fa-medkit"></i>Agregar Medicamento</button>
     </div>
     <div id="formularioMedicamentoContainer"></div>
     <table id="tablaMedicamentos">
@@ -76,12 +76,8 @@ async function listarMedicamentos(tbody, formularioContainer) {
         <td>${new Date(medicamento.fecha_vencimiento).toLocaleDateString()}</td>
         <td>${medicamento.presentacion}</td>
         <td>
-          <button class="btn-editar" data-id="${
-            medicamento._id
-          }">Editar</button>
-          <button class="btn-eliminar" data-id="${
-            medicamento._id
-          }">Eliminar</button>
+          <button class="btn-editar btn-icon" data-id="${medicamento._id}" title="Editar"><i class="fas fa-edit"></i></button>
+          <button class="btn-eliminar btn-icon" data-id="${medicamento._id}" title="Eliminar"><i class="fas fa-trash"></i></button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -173,10 +169,11 @@ function mostrarFormularioMedicamento(medicamento, container, tablaBody) {
       }" required>
       
       <div class="form-actions">
-        <button type="submit" class="btn-guardar">${
+        <button type="submit" class="btn-guardar"><i class="fas fa-save" style="margin-right: 6px;"></i>
+        ${
           esEdicion ? "Actualizar" : "Guardar"
         }</button>
-        <button type="button" id="btnCancelarMedicamento" class="btn-cancelar">Cancelar</button>
+        <button type="button" id="btnCancelarMedicamento" class="btn-cancelar"><i class="fas fa-times-circle" style="margin-right: 6px;"></i>Cancelar
       </div>
     </form>
   `;

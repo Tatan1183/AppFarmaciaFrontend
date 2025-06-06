@@ -12,7 +12,7 @@ async function cargarVistaEmpleados(contenedor) {
   contenedor.innerHTML = `
     <div class="gestion-header">
       <h2>Gestión de Empleados</h2>
-      <button id="btnAgregarEmpleado" class="btn-agregar">Agregar Empleado</button>
+      <button id="btnAgregarEmpleado" class="btn-agregar"><i class="fas fa-user-tie"></i> Agregar Empleado</button>
     </div>
     <div id="formularioEmpleadoContainer"></div>
     <table id="tablaEmpleados">
@@ -68,8 +68,8 @@ async function listarEmpleados(tbody, formularioContainer) {
         <td>${empleado.telefono}</td>
         <td>${empleado.turno}</td>
         <td>
-          <button class="btn-editar" data-id="${empleado._id}">Editar</button>
-          <button class="btn-eliminar" data-id="${empleado._id}">Eliminar</button>
+          <button class="btn-editar btn-icon" data-id="${empleado._id}" title="Editar"><i class="fas fa-edit"></i></button>
+          <button class="btn-eliminar btn-icon" data-id="${empleado._id}" title="Eliminar"><i class="fas fa-trash"></i></button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -144,11 +144,17 @@ function mostrarFormularioEmpleado(empleado, container, tablaBody) {
       </select>
       
       <div class="form-actions">
-        <button type="submit" class="btn-guardar">${
-          esEdicion ? "Actualizar" : "Guardar"
-        }</button>
-        <button type="button" id="btnCancelarEmpleado" class="btn-cancelar">Cancelar</button>
-      </div>
+  <button type="submit" class="btn-guardar">
+    <i class="fas fa-save" style="margin-right: 6px;"></i>
+    ${esEdicion ? "Actualizar" : "Guardar"}
+  </button>
+  
+  <button type="button" id="btnCancelarEmpleado" class="btn-cancelar">
+    <i class="fas fa-times-circle"></i>
+    Cancelar
+  </button>
+</div>
+
     </form>
   `;
 

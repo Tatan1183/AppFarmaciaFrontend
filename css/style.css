@@ -257,7 +257,15 @@ nav {
   border-color: var(--primary-hover-color);
 }
 
-.btn-agregar,
+.btn-agregar{
+  box-shadow: var(--shadow-md);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-speed-normal) ease;
+  background-color: #007bff;
+}
+
 .btn-guardar {
   background-color: var(--success-color);
   color: var(--on-success-color);

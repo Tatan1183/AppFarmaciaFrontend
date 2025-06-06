@@ -7,7 +7,7 @@ async function cargarVistaClientes(contenedor) {
   contenedor.innerHTML = `
     <div class="gestion-header">
       <h2>Gestión de Clientes</h2>
-      <button id="btnAgregarCliente" class="btn-agregar">Agregar Cliente</button>
+      <button id="btnAgregarCliente" class="btn-agregar"><i class="fas fa-user-plus"></i>Agregar Cliente</button>
     </div>
     <div id="formularioClienteContainer"></div>
     <table id="tablaClientes">
@@ -65,8 +65,8 @@ async function listarClientes(tbody, formularioContainer) {
         <td>${cliente.direccion}</td>
         <td>${cliente.correo}</td>
         <td>
-          <button class="btn-editar" data-id="${cliente._id}">Editar</button>
-          <button class="btn-eliminar" data-id="${cliente._id}">Eliminar</button>
+          <button class="btn-editar btn-icon" data-id="${cliente._id}" title="Editar"><i class="fas fa-edit"></i></button>
+          <button class="btn-eliminar btn-icon" data-id="${cliente.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -132,10 +132,10 @@ function mostrarFormularioCliente(cliente, container, tablaBody) {
       <input type="email" id="correo" value="${cliente?.correo || ""}" required>
       
       <div class="form-actions">
-        <button type="submit" class="btn-guardar">${
-          esEdicion ? "Actualizar" : "Guardar"
-        }</button>
-        <button type="button" id="btnCancelarCliente" class="btn-cancelar">Cancelar</button>
+        <button type="submit" class="btn-guardar">
+        <i class="fas fa-save" style="margin-rigth: 6px;"></i>
+        ${esEdicion ? "Actualizar" : "Guardar"}</button>
+        <button type="button" id="btnCancelarCliente" class="btn-cancelar"><i class="fas fa-times-circle" style="margin-rigth: 6px;"></i>Cancelar</button>
       </div>
     </form>
   `;
@@ -211,3 +211,4 @@ async function eliminarCliente(id, tablaBody, formularioContainer) {
     alert(error.message);
   }
 }
+

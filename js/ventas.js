@@ -13,7 +13,7 @@ async function cargarVistaVentas(contenedor) {
   contenedor.innerHTML = `
     <div class="gestion-header">
       <h2>Gestión de Ventas</h2>
-      <button id="btnAgregarVenta" class="btn-agregar">Registrar Nueva Venta</button>
+      <button id="btnAgregarVenta" class="btn-agregar"><i class="fa fa-cart-arrow-down"></i> Registrar Nueva Venta</button>
     </div>
     <div id="formularioVentaContainer"></div>
     <table id="tablaVentas">
@@ -112,10 +112,8 @@ async function listarVentas(tbody, formularioContainer) {
         <td>${venta.metodo_pago}</td>
         <td><ul>${itemsHtml}</ul></td>
         <td>
-          <!-- <button class="btn-editar" data-id="${
-            venta._id
-          }">Editar</button> Podría ser complejo -->
-          <button class="btn-eliminar" data-id="${venta._id}">Eliminar</button>
+          <button class="btn-editar btn-icon" data-id="${venta._id}" title="Editar"><i class="fas fa-edit"></i></button>
+          <button class="btn-eliminar btn-icon" data-id="${venta._id}" title="Eliminar"><i class="fas fa-trash"></i></button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -199,8 +197,8 @@ function mostrarFormularioVenta(venta, container, tablaBody) {
       <p><strong>Total Venta: $<span id="totalVentaCalculado">0.00</span></strong></p>
       
       <div class="form-actions">
-        <button type="submit" class="btn-guardar">Registrar Venta</button>
-        <button type="button" id="btnCancelarVenta" class="btn-cancelar">Cancelar</button>
+        <button type="submit" class="btn-guardar"><i class="fas fa-save" style="margin-right: 6px;"></i>Registrar Venta </button>
+        <button type="button" id="btnCancelarVenta" class="btn-cancelar"><i class="fas fa-times-circle" style="margin-right: 6px;"></i>Cancelar Venta</button>
       </div>
     </form>
   `;
