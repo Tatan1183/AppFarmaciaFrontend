@@ -66,7 +66,7 @@ async function listarClientes(tbody, formularioContainer) {
         <td>${cliente.correo}</td>
         <td>
           <button class="btn-editar btn-icon" data-id="${cliente._id}" title="Editar"><i class="fas fa-edit"></i></button>
-          <button class="btn-eliminar btn-icon" data-id="${cliente.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
+          <button class="btn-eliminar btn-icon" data-id="${cliente._id}" title="Eliminar"><i class="fas fa-trash"></i></button>
         </td>
       `;
       tbody.appendChild(tr);

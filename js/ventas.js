@@ -112,9 +112,13 @@ async function listarVentas(tbody, formularioContainer) {
         <td>${venta.metodo_pago}</td>
         <td><ul>${itemsHtml}</ul></td>
         <td>
-          <button class="btn-editar btn-icon" data-id="${venta._id}" title="Editar"><i class="fas fa-edit"></i></button>
-          <button class="btn-eliminar btn-icon" data-id="${venta._id}" title="Eliminar"><i class="fas fa-trash"></i></button>
-        </td>
+  <button class="btn-editar btn-icon" data-id="${
+    venta._id
+  }" title="Editar"><i class="fas fa-edit"></i></button>
+  <button class="btn-eliminar btn-icon" data-id="${
+    venta._id
+  }" title="Eliminar"><i class="fas fa-trash"></i></button>
+</td>
       `;
       tbody.appendChild(tr);
     });

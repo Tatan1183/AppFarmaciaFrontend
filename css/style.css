@@ -2,8 +2,8 @@
 :root {
   --primary-color: #007bff;
   --primary-hover-color: #0056b3;
-  --primary-light-color: #e0f0ff; /* Un azul más claro para fondos sutiles */
-  --on-primary-color: #ffffff; /* Texto sobre color primario */
+  --primary-light-color: #e0f0ff;
+  --on-primary-color: #ffffff;
 
   --secondary-color: #6c757d;
   --secondary-hover-color: #545b62;
@@ -19,16 +19,15 @@
 
   --warning-color: #ffc107;
   --warning-hover-color: #d39e00;
-  --on-warning-color: #212529; /* Texto oscuro para amarillo */
+  --on-warning-color: #212529;
 
   --info-color: #17a2b8;
   --info-hover-color: #117a8b;
   --on-info-color: #ffffff;
 
-  --surface-color: #ffffff; /* Color de fondo para "cards" o superficies elevadas */
-  --background-color: #f8f9fa; /* Color de fondo principal del body de la APP */
-  /* --background-color-page: #eef2f7; QUITAMOS ESTA, se manejará en style2.css */
-  --on-surface-color: #343a40; /* Texto principal sobre superficies */
+  --surface-color: #ffffff;
+  --background-color: #f8f9fa;
+  --on-surface-color: #343a40;
   --text-muted-color: #6c757d;
   --border-color: #dee2e6;
   --border-color-light: #e9ecef;
@@ -60,6 +59,7 @@
   --spacing-xl: 2rem;
 }
 
+/* --- RESET BÁSICO Y CONFIGURACIÓN GLOBAL --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -67,21 +67,18 @@
 }
 
 html {
-  font-size: 100%; /* Base for rem units */
+  font-size: 100%;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  /* ESTE ES EL BODY PARA index.html */
   font-family: var(--font-primary);
-  background-color: var(
-    --background-color
-  ); /* Fondo de la aplicación principal */
+  background-color: var(--background-color);
   color: var(--on-surface-color);
   line-height: 1.6;
-  font-size: 1rem; /* 16px by default */
+  font-size: 1rem;
 }
 
 .page-wrapper {
@@ -97,14 +94,14 @@ body {
   padding: 0 var(--spacing-md);
 }
 
-/* Header & Navigation */
+/* --- HEADER Y NAVEGACIÓN --- */
 header {
   background-color: var(--surface-color);
   padding: var(--spacing-sm) 0;
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
-  z-index: 1020; /* Ensure it's above most content */
+  z-index: 1020;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -122,15 +119,14 @@ header {
   color: var(--primary-color);
   text-decoration: none;
 }
-.logo-icon {
+.logo-icon { /* Si decides usar un icono de FontAwesome como logo */
   font-size: 2.25rem;
   margin-right: var(--spacing-sm);
 }
-
-.app-logo-img-right {
-  height: 110px; /* Generalmente un logo secundario es más pequeño */
-  width: 110px;
-  margin-left: var(--spacing-md); /* Espacio a la izquierda, después del texto */
+.app-logo-img { /* Si usas una imagen como logo principal */
+  height: 40px; /* Ajusta esto */
+  width: auto;
+  margin-right: var(--spacing-sm);
 }
 
 header h1 {
@@ -176,14 +172,13 @@ nav {
   border-bottom-color: var(--primary-color);
 }
 
-/* Main Content Area */
+/* --- ÁREA DE CONTENIDO PRINCIPAL --- */
 #contenido-principal {
   flex-grow: 1;
   padding: var(--spacing-xl) 0;
 }
 
-#contenido > div {
-  /* The dynamically generated view container */
+#contenido > div { /* Contenedor de la vista cargada dinámicamente */
   background-color: var(--surface-color);
   padding: var(--spacing-lg) var(--spacing-xl);
   border-radius: var(--border-radius-lg);
@@ -191,7 +186,6 @@ nav {
   border: 1px solid var(--border-color);
 }
 
-/* Section Headers (e.g., "Gestión de Medicamentos") */
 .gestion-header {
   display: flex;
   justify-content: space-between;
@@ -210,7 +204,9 @@ nav {
   margin: 0;
 }
 
-/* Buttons General */
+/* --- ESTILOS DE BOTONES GENERALES Y ESPECÍFICOS --- */
+
+/* Base para la mayoría de los botones */
 .btn {
   padding: 0.65rem 1.3rem;
   border-radius: var(--border-radius-md);
@@ -225,7 +221,7 @@ nav {
   gap: var(--spacing-sm);
   text-decoration: none;
   line-height: 1.5;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 .btn:hover {
   opacity: 0.9;
@@ -235,29 +231,16 @@ nav {
   transform: scale(0.98) translateY(0);
 }
 .btn:focus-visible {
-  /* For keyboard navigation */
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
-.btn i,
-.btn .fab,
-.btn .fas,
-.btn .far {
-  /* More specific FontAwesome selectors */
-  line-height: 1; /* Ensure icon doesn't mess with button height */
+.btn i { /* Estilo general para iconos dentro de botones .btn */
+  line-height: 1;
+  /* margin-right: var(--spacing-xs); Quitado para usar 'gap' en .btn */
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  color: var(--on-primary-color);
-  border-color: var(--primary-color);
-}
-.btn-primary:hover {
-  background-color: var(--primary-hover-color);
-  border-color: var(--primary-hover-color);
-}
-
-.btn-agregar{
+/* Botón AGREGAR (Ej: "Agregar Cliente", "Agregar Medicamento") */
+.btn-agregar { /* Se usa en gestion-header */
   box-shadow: var(--shadow-md);
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -265,40 +248,69 @@ nav {
   transition: all var(--transition-speed-normal) ease;
   background-color: #007bff;
 }
+.btn-agregar:hover {
+  background-color: var(--success-hover-color);
+  border-color: var(--success-hover-color);
+  box-shadow: var(--shadow-sm);
+}
 
+/* Botones de acción en TABLAS (Editar, Eliminar - BOTONES DE ICONO) */
+.btn-icon {
+  padding: 0.5rem; /* Más pequeño */
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-xs);
+  gap: 0; /* No necesitamos gap si solo hay icono */
+}
+.btn-icon:last-child {
+  margin-right: 0;
+}
+.btn-icon:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+.btn-icon i {
+  font-size: 0.95rem; /* Ajusta el tamaño del icono */
+  line-height: 1;
+}
+
+.btn-editar.btn-icon {
+  background-color: var(--warning-color);
+  color: var(--on-warning-color);
+  border-color: var(--warning-color);
+}
+.btn-editar.btn-icon:hover {
+  background-color: var(--warning-hover-color);
+  border-color: var(--warning-hover-color);
+}
+
+.btn-eliminar.btn-icon {
+  background-color: var(--danger-color);
+  color: var(--on-danger-color);
+  border-color: var(--danger-color);
+}
+.btn-eliminar.btn-icon:hover {
+  background-color: var(--danger-hover-color);
+  border-color: var(--danger-hover-color);
+}
+
+/* Botones de FORMULARIO (Guardar, Cancelar) */
+/* Ya tienes .btn-guardar y .btn-cancelar, se aplican sobre .btn */
 .btn-guardar {
   background-color: var(--success-color);
   color: var(--on-success-color);
   border-color: var(--success-color);
 }
-.btn-agregar:hover,
 .btn-guardar:hover {
   background-color: var(--success-hover-color);
   border-color: var(--success-hover-color);
-}
-
-.btn-editar {
-  background-color: var(--warning-color);
-  color: var(--on-warning-color);
-  border-color: var(--warning-color);
-}
-.btn-editar:hover {
-  background-color: var(--warning-hover-color);
-  border-color: var(--warning-hover-color);
-}
-
-.btn-eliminar,
-.btn-accion-peligro,
-.btn-remover-item {
-  background-color: var(--danger-color);
-  color: var(--on-danger-color);
-  border-color: var(--danger-color);
-}
-.btn-eliminar:hover,
-.btn-accion-peligro:hover,
-.btn-remover-item:hover {
-  background-color: var(--danger-hover-color);
-  border-color: var(--danger-hover-color);
 }
 
 .btn-cancelar {
@@ -311,60 +323,37 @@ nav {
   border-color: var(--secondary-hover-color);
 }
 
-.btn-accion-secundaria {
-  background-color: var(--info-color);
-  color: var(--on-info-color);
-  border-color: var(--info-color);
-}
-.btn-accion-secundaria:hover {
-  background-color: var(--info-hover-color);
-  border-color: var(--info-hover-color);
-}
-
+/* Botón de Logout (ya estaba bien) */
 .btn-logout {
-  /* Specific style for logout button in header */
   background-color: var(--danger-color);
   color: var(--on-danger-color);
   border-color: var(--danger-color);
-  padding: var(--spacing-sm) var(--spacing-md); /* Match nav button padding */
+  padding: var(--spacing-sm) var(--spacing-md); /* Coincide con nav-button */
 }
 .btn-logout:hover {
   background-color: var(--danger-hover-color);
   border-color: var(--danger-hover-color);
 }
 .btn-logout i {
-  margin-right: var(--spacing-xs);
+  margin-right: var(--spacing-xs); /* Si no usas gap en la clase .btn directamente */
 }
 
-/* Icon-only buttons (often for table actions) */
-.btn-icon {
-  padding: 0.5rem;
-  width: 2.25rem; /* Square shape */
-  height: 2.25rem;
-}
-.btn-icon i {
-  margin-right: 0 !important;
-  font-size: 1rem;
-}
 
-/* Tables */
+/* --- TABLAS --- */
 .table-responsive {
   overflow-x: auto;
   width: 100%;
   margin-top: var(--spacing-lg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  background-color: var(
-    --surface-color
-  ); /* Ensure bg color if table is transparent */
+  background-color: var(--surface-color);
 }
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 750px;
+  min-width: 750px; /* Ajusta según tus columnas */
 }
-th,
-td {
+th, td {
   padding: var(--spacing-md);
   text-align: left;
   border-bottom: 1px solid var(--border-color-light);
@@ -372,7 +361,7 @@ td {
   vertical-align: middle;
 }
 thead th {
-  background-color: var(--background-color); /* Usa el fondo de la app */
+  background-color: var(--background-color);
   color: var(--text-muted-color);
   font-weight: var(--font-weight-semibold);
   font-family: var(--font-headings);
@@ -382,12 +371,13 @@ thead th {
   border-bottom-width: 2px;
   border-bottom-color: var(--border-color);
 }
-tr:last-child td {
+tbody tr:last-child td {
   border-bottom: none;
 }
 tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.03); /* Subtle hover */
+  background-color: rgba(0, 0, 0, 0.03);
 }
+/* Estilos para listas dentro de celdas de tabla (ej. items de venta) */
 td ul {
   list-style: none;
   padding-left: 0;
@@ -397,28 +387,9 @@ td ul li {
   margin-bottom: var(--spacing-xs);
   font-size: 0.85rem;
 }
-td .btn {
-  /* Smaller buttons in table cells */
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  margin-right: var(--spacing-xs);
-}
-td .btn:last-child {
-  margin-right: 0;
-}
-td .btn-icon {
-  /* Icon buttons in table cells */
-  padding: 0.4rem;
-  width: 2rem;
-  height: 2rem;
-}
-td .btn-icon i {
-  font-size: 0.9rem;
-}
 
-/* Forms */
+/* --- FORMULARIOS --- */
 .form-gestion {
-  /* Contenedor para formularios de gestión en la app principal */
   margin-bottom: var(--spacing-xl);
 }
 .form-gestion h3 {
@@ -433,13 +404,10 @@ td .btn-icon i {
 }
 
 .form-group {
-  /* Wrapper for label + input (ESTILO BASE) */
   margin-bottom: var(--spacing-md);
 }
 
-/* Estilos base para labels e inputs (se aplicarán a AMBAS páginas si .form-group se usa) */
 label {
-  /* ESTILO BASE */
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: var(--font-weight-medium);
@@ -451,10 +419,9 @@ input[type="text"],
 input[type="number"],
 input[type="email"],
 input[type="date"],
-input[type="password"], /* Incluido para que el login lo herede */
+input[type="password"],
 select,
 textarea {
-  /* ESTILOS BASE */
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
@@ -470,36 +437,37 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  /* ESTILOS BASE */
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus ring */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 input::placeholder,
 textarea::placeholder {
-  /* ESTILOS BASE */
   color: var(--text-muted-color);
   opacity: 0.7;
 }
 input:disabled,
 select:disabled,
 textarea:disabled {
-  /* ESTILOS BASE */
   background-color: var(--border-color-light);
   cursor: not-allowed;
   opacity: 0.7;
 }
 
 .form-actions {
-  /* Para formularios de la app principal */
   margin-top: var(--spacing-lg);
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-sm);
-  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  flex-wrap: wrap;
+}
+/* Para que los iconos en botones de formulario tengan margen */
+.form-actions .btn i {
+  margin-right: var(--spacing-xs);
 }
 
-/* Items de Venta en Formulario (Específico de index.html) */
+
+/* --- ITEMS DE VENTA EN FORMULARIO (Específico) --- */
 #itemsVentaFieldset {
   border: 1px solid var(--border-color);
   padding: var(--spacing-lg);
@@ -517,7 +485,7 @@ textarea:disabled {
 }
 .item-venta-linea {
   display: grid;
-  grid-template-columns: minmax(150px, 3fr) 1fr 1fr auto; /* Medicamento, Cantidad, Precio, Botón */
+  grid-template-columns: minmax(150px, 3fr) 1fr 1fr auto;
   align-items: center;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-md);
@@ -529,10 +497,6 @@ textarea:disabled {
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.item-venta-linea .medicamento-select,
-.item-venta-linea .cantidad-medicamento {
-  margin-bottom: 0; /* Override default form element margin */
-}
 .item-venta-linea .cantidad-medicamento {
   text-align: center;
 }
@@ -542,30 +506,42 @@ textarea:disabled {
   white-space: nowrap;
   text-align: right;
 }
-#itemsVentaFieldset #btnAgregarItemVenta {
+#itemsVentaFieldset #btnAgregarItemVenta, /* Botón "Agregar Medicamento" dentro del form de ventas */
+.btn-remover-item { /* Botón "Quitar" item de venta */
+    /* Heredan de .btn, pero puedes añadir estilos específicos */
+}
+.btn-remover-item { /* Si quieres que "Quitar" sea rojo */
+    background-color: var(--danger-color);
+    color: var(--on-danger-color);
+    border-color: var(--danger-color);
+    padding: 0.4rem 0.8rem; /* Más pequeño */
+}
+.btn-remover-item:hover {
+    background-color: var(--danger-hover-color);
+    border-color: var(--danger-hover-color);
+}
+
+
+#totalVentaCalculadoContainer { /* Si tienes un contenedor específico para el total */
+  display: block;
+  text-align: right;
   margin-top: var(--spacing-md);
+  font-size: 1.1rem;
 }
 #totalVentaCalculado {
   font-weight: var(--font-weight-bold);
   font-size: 1.35em;
   color: var(--primary-color);
 }
-.form-gestion p strong#totalVentaCalculadoContainer {
-  /* Adjusted for more semantic HTML if you wrap the total */
-  display: block;
-  text-align: right;
-  margin-top: var(--spacing-md);
-  font-size: 1.1rem;
-}
 
-/* Footer (Específico de index.html) */
+/* --- FOOTER --- */
 footer {
-  background-color: #2c3e50; /* Darker, sophisticated blue-grey */
-  color: #bdc3c7; /* Lighter grey for text */
+  background-color: #2c3e50;
+  color: #bdc3c7;
   padding: var(--spacing-xl) 0;
   text-align: center;
   font-size: 0.9rem;
-  margin-top: auto; /* Pushes footer to bottom with flex page-wrapper */
+  margin-top: auto;
   border-top: 4px solid var(--primary-color);
 }
 footer .container {
@@ -578,21 +554,16 @@ footer p {
   margin-bottom: var(--spacing-xs);
 }
 footer strong {
-  color: #ecf0f1; /* Even lighter for emphasis */
+  color: #ecf0f1;
   font-weight: var(--font-weight-medium);
 }
 footer .icon-heart {
-  color: #e74c3c; /* Consistent red for heart */
+  color: #e74c3c;
   animation: pulseHeart 1.5s infinite ease-in-out;
 }
 @keyframes pulseHeart {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
 .social-icons a {
   color: #bdc3c7;
@@ -606,7 +577,7 @@ footer .icon-heart {
   transform: translateY(-3px) scale(1.1);
 }
 
-/* Spinner de Carga (Común, pero definido aquí como base) */
+/* --- SPINNER DE CARGA --- */
 .loading-spinner {
   display: flex;
   flex-direction: column;
@@ -615,7 +586,7 @@ footer .icon-heart {
   padding: var(--spacing-xl);
   font-size: 1.25rem;
   color: var(--primary-color);
-  min-height: 200px; /* Ensure it takes some space */
+  min-height: 200px;
 }
 .loading-spinner i {
   font-size: 2.5rem;
@@ -623,147 +594,69 @@ footer .icon-heart {
   animation: spin 1.5s linear infinite;
 }
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Responsive Adjustments (Específico de index.html en su mayoría) */
+/* --- CLASES DE UTILIDAD --- */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+/* ... (puedes añadir más si las necesitas) ... */
+
+
+/* --- AJUSTES RESPONSIVE --- */
 @media (max-width: 992px) {
   .header-content {
     flex-direction: column;
-    align-items: flex-start; /* Align logo and nav to start */
+    align-items: flex-start;
   }
   .header-content .btn-logout {
-    align-self: flex-start; /* Align logout button with nav */
+    align-self: flex-start;
     margin-top: var(--spacing-sm);
   }
   nav {
-    width: 100%; /* Make nav take full width to allow wrapping */
+    width: 100%;
     justify-content: flex-start;
   }
   .item-venta-linea {
-    grid-template-columns: 1fr 1fr auto; /* Medicamento, Cantidad + Precio, Botón */
+    grid-template-columns: 1fr 1fr auto;
     grid-template-areas:
       "medicamento medicamento medicamento"
       "cantidad precio remover";
   }
-  .item-venta-linea .medicamento-select {
-    grid-area: medicamento;
-  }
-  .item-venta-linea .cantidad-medicamento {
-    grid-area: cantidad;
-  }
-  .item-venta-linea .precio-unitario-display {
-    grid-area: precio;
-    text-align: left;
-  }
-  .item-venta-linea .btn-remover-item {
-    grid-area: remover;
-    justify-self: end;
-  }
+  .item-venta-linea .medicamento-select { grid-area: medicamento; }
+  .item-venta-linea .cantidad-medicamento { grid-area: cantidad; }
+  .item-venta-linea .precio-unitario-display { grid-area: precio; text-align: left; }
+  .item-venta-linea .btn-remover-item { grid-area: remover; justify-self: end; }
 }
 
 @media (max-width: 768px) {
-  /* :root { font-size: 93.75%; }  Si necesitas cambiar la base global, hazlo. Sino, ajustes específicos. */
-  header h1 {
-    font-size: 1.5rem;
-  }
-  .logo-icon {
-    font-size: 2rem;
-  }
-
-  .gestion-header {
-    flex-direction: column;
-    align-items: stretch; /* Make button full width */
-  }
-  .gestion-header .btn {
-    width: 100%;
-    justify-content: center;
-  }
-  .form-actions {
-    flex-direction: column;
-  }
-  .form-actions .btn {
-    width: 100%;
-  }
-  #contenido > div {
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
+  header h1 { font-size: 1.5rem; }
+  .logo-icon { font-size: 2rem; }
+  .gestion-header { flex-direction: column; align-items: stretch; }
+  .gestion-header .btn-agregar { width: 100%; justify-content: center; } /* Botón agregar full width */
+  .form-actions { flex-direction: column; }
+  .form-actions .btn { width: 100%; }
+  #contenido > div { padding: var(--spacing-md) var(--spacing-lg); }
 }
 
 @media (max-width: 576px) {
-  .nav-button {
-    width: 100%; /* Stack nav buttons vertically */
-    justify-content: flex-start;
-    padding-left: var(--spacing-md);
-  }
-  .nav-button.active {
-    border-left: 3px solid var(--primary-color);
-    border-bottom-color: transparent; /* Remove bottom border for stacked view */
-  }
-  .header-content {
-    gap: var(--spacing-sm);
-  }
-  header h1 {
-    font-size: 1.35rem;
-  }
-  .logo-icon {
-    font-size: 1.75rem;
-  }
-  .gestion-header h2 {
-    font-size: 1.6rem;
-  }
-  #contenido > div {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
+  .nav-button { width: 100%; justify-content: flex-start; padding-left: var(--spacing-md); }
+  .nav-button.active { border-left: 3px solid var(--primary-color); border-bottom-color: transparent; }
+  header h1 { font-size: 1.35rem; }
+  .logo-icon { font-size: 1.75rem; }
+  .gestion-header h2 { font-size: 1.6rem; }
+  #contenido > div { padding: var(--spacing-sm) var(--spacing-md); }
   .item-venta-linea {
-    grid-template-columns: 1fr; /* Stack everything vertically */
-    grid-template-areas:
-      "medicamento"
-      "cantidad"
-      "precio"
-      "remover";
+    grid-template-columns: 1fr;
+    grid-template-areas: "medicamento" "cantidad" "precio" "remover";
     gap: var(--spacing-sm);
   }
   .item-venta-linea .precio-unitario-display,
-  .item-venta-linea .btn-remover-item {
-    justify-self: start; /* Align to left */
-  }
-  .item-venta-linea .btn-remover-item {
-    width: 100%;
-  }
-  .social-icons a {
-    font-size: 1.3rem;
-    margin: 0 var(--spacing-xs);
-  }
-}
-
-/* Utility classes (pueden ser usadas por ambas páginas si se incluyen aquí) */
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
-.mb-1 {
-  margin-bottom: var(--spacing-xs);
-}
-.mb-2 {
-  margin-bottom: var(--spacing-sm);
-}
-.mb-3 {
-  margin-bottom: var(--spacing-md);
-}
-.mt-1 {
-  margin-top: var(--spacing-xs);
-}
-.mt-2 {
-  margin-top: var(--spacing-sm);
-}
-.mt-3 {
-  margin-top: var(--spacing-md);
+  .item-venta-linea .btn-remover-item { justify-self: start; }
+  .item-venta-linea .btn-remover-item { width: 100%; }
+  .social-icons a { font-size: 1.3rem; margin: 0 var(--spacing-xs); }
 }
